@@ -64,14 +64,19 @@ Shader "Hidden/ComicBlur"
                 UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(i);
                 half depth = SAMPLE_TEXTURE2D(_CameraDepthTexture, sampler_CameraDepthTexture, i.uv).r;
 
-                float2 slide = _BlurDir.xy * _BlurRange * depth;
+                float2 Xslide = float2(_BlurDir.x * _BlurRange * depth, 0);
+                float2 Yslide = float2(0, _BlurDir.y * _BlurRange * depth);
 
                 
                 half4 col = half4(0, 0, 0, 1);
 
-                col.r += SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.uv).r;
-                col.g += SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.uv + slide).g;
-                col.b += SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.uv - slide).b;
+                col.r += SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.uv).r / 2;
+                col.g += SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.uv + Xslide).g / 2;
+                col.b += SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.uv - Xslide).b / 2;
+
+                col.r += SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.uv - Yslide).r / 2;
+                col.g += SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.uv).g / 2;
+                col.b += SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.uv + Yslide).b / 2;
 
                 return col;
             }

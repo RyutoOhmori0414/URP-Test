@@ -31,7 +31,7 @@ MonoBehaviour:
   m_Active: 1
   _shader: {fileID: 4800000, guid: fe8e5b9f29b8f2a49b584faceac5cd0b, type: 3}
   _timing: 0
-  _applyToSceneView: 1
+  _applyToSceneView: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
