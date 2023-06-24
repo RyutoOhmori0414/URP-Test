@@ -60,9 +60,7 @@ public class GlitchPostProcessPass : ScriptableRenderPass
     }
 
     public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
-    {
-        Debug.Log(renderPassEvent);
-        
+    {   
         if (!_material || !renderingData.cameraData.postProcessEnabled ||
             (!_applyToSceneView && renderingData.cameraData.cameraType == CameraType.SceneView) ||
             !_volume.IsActive())
