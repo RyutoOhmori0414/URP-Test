@@ -29,7 +29,7 @@ MonoBehaviour:
   active: 1
   BlurRange:
     m_OverrideState: 1
-    m_Value: 0.04
+    m_Value: 0.05
   BlurDirection:
     m_OverrideState: 1
     m_Value: {x: 0.73, y: 1}
